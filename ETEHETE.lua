@@ -102,6 +102,18 @@ local function zisay(text)
     SendPacket(2, "action|input\ntext|".. text)
 end
 
+local function warnText(text)
+    text = text
+    packet = {}
+    packet[0] = "OnAddNotification"
+    packet[1] = "interface/atomic_button.rttex"
+    packet[2] = text
+    packet[3] = "audio/hub_open.wav"
+    packet[4] = 0
+    SendVariantList(packet)
+    return true
+end
+
 zisay("`9Premium `4PTHT `9By `b@Ziroi `0[`#Zi-Community`0] `2Has Been Injected")
 Sleep(3000)
 
@@ -246,18 +258,6 @@ end
 playerHook("Script is now runing!")
 
 SendPacket(2, "action|dialog_return\ndialog_name|cheats\ncheck_gems|1")
-
-local function warnText(text)
-    text = text
-    packet = {}
-    packet[0] = "OnAddNotification"
-    packet[1] = "interface/atomic_button.rttex"
-    packet[2] = text
-    packet[3] = "audio/hub_open.wav"
-    packet[4] = 0
-    SendVariantList(packet)
-    return true
-end
 
 local function getRemote()
     if findItem(5640) == 0 or changeRemote then
